@@ -15,7 +15,9 @@ inquirer
     }
   ])
   .then((answers) => {
-    console.log(answers);
+    const url = answers.URL;
+    var qr_svg = qr.image(url);
+    qr_svg.pipe(require('fs').createWriteStream('qr_img.svg'));  
   })
   .catch((error) => {
     if (error.isTtyError) {
@@ -26,5 +28,3 @@ inquirer
   });
 
 
-// var qr_svg = qr.image('I love QR!', { type: 'svg'});
-// qr_svg.pipe
